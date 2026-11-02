@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpecsMax – Premium Optical Store | Power Glasses, Sunglasses & Contact Lenses</title>
+<meta name="description" content="SpecsMax – Your Vision, Our Priority. Shop premium power glasses, cooling glasses and contact lenses in Chennai.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind + DaisyUI -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css"/>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { poppins: ['Poppins','sans-serif'], inter: ['Inter','sans-serif'] },
+      colors: {
+        navy: { DEFAULT:'#0b2545', light:'#13315c', dark:'#071a30' },
+        sky2: { DEFAULT:'#38bdf8', dark:'#0ea5e9' }
+      }
+    }
+  }
+}
+</script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family:'Inter',sans-serif; overflow-x:hidden; }
+  h1,h2,h3,h4,.font-poppins { font-family:'Poppins',sans-serif; }
+
+  ::-webkit-scrollbar { width:8px; height:8px; }
+  ::-webkit-scrollbar-track { background:#f1f5f9; }
+  ::-webkit-scrollbar-thumb { background:#38bdf8; border-radius:8px; }
+
+  /* ---------- Promo marquee ---------- */
+  @keyframes marquee { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+  .marquee-track { display:flex; width:max-content; animation:marquee 28s linear infinite; }
+  .marquee-track:hover { animation-play-state:paused; }
+
+  /* ---------- Entrance / scroll reveal ---------- */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.revealed { opacity:1; transform:translateY(0); }
+  @keyframes heroIn { from { opacity:0; transform:translateY(30px) scale(.98);} to { opacity:1; transform:translateY(0) scale(1);} }
+  .hero-anim { animation:heroIn .9s ease both; }
+  .hero-anim-2 { animation:heroIn .9s ease .25s both; }
+  .hero-anim-3 { animation:heroIn .9s ease .5s both; }
+
+  /* ---------- Cards ---------- */
+  .product-card { transition:transform .35s ease, box-shadow .35s ease; }
+  .product-card:hover { transform:translateY(-6px); box-shadow:0 20px 40px -12px rgba(11,37,69,.25); }
+  .cat-card img { transition:transform .6s ease; }
+  .cat-card:hover img { transform:scale(1.07); }
+  .no-scrollbar::-webkit-scrollbar { display:none; }
+  .no-scrollbar { scrollbar-width:none; }
+
+  /* ---------- Carousel ---------- */
+  .offer-slide { position:absolute; inset:0; opacity:0; transition:opacity .8s ease; pointer-events:none; }
+  .offer-slide.active { opacity:1; pointer-events:auto; }
+  .dot { transition:all .3s ease; }
+  .dot.active { width:26px; background:#38bdf8; }
+
+  /* ---------- Floating buttons ---------- */
+  @keyframes floatPulse { 0%,100% { transform:scale(1);} 50% { transform:scale(1.08);} }
+  .float-btn { animation:floatPulse 2.6s ease-in-out infinite; transition:transform .3s ease, box-shadow .3s ease; }
+  .float-btn:hover { transform:scale(1.12); box-shadow:0 10px 25px rgba(0,0,0,.3); }
+
+  /* ---------- Back to top ---------- */
+  #backToTop { opacity:0; pointer-events:none; transition:opacity .3s ease; }
+  #backToTop.show { opacity:1; pointer-events:auto; }
+
+  /* Cart badge pop */
+  @keyframes pop { 0%{transform:scale(1);} 50%{transform:scale(1.35);} 100%{transform:scale(1);} }
+  .badge-pop { animation:pop .35s ease; }
+
+  .hero-blob { position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; }
+  .gradient-text { background:linear-gradient(90deg,#0ea5e9,#0b2545); -webkit-background-clip:text; background-clip:text; color:transparent; }
+</style>
+<base target="_blank">
+</head>
+
+<body class="bg-white text-slate-700 antialiased">
+
+<!-- ============ TOP PROMO BANNER ============ -->
+<div class="bg-navy text-white text-sm overflow-hidden relative z-50">
+  <div class="marquee-track py-2 font-medium tracking-wide">
+    <span class="flex items-center gap-10 pr-10">
+      <span><i class="fa-solid fa-tags text-sky2 mr-2"></i>Special Offers on Power Glasses – Up to 40% OFF!</span>
+      <span><i class="fa-solid fa-sun text-amber-400 mr-2"></i>Upgrade Your Style with Premium Cooling Glasses.</span>
+      <span><i class="fa-solid fa-eye text-sky2 mr-2"></i>Explore Comfortable Contact Lenses – Starting ₹999.</span>
+      <span><i class="fa-solid fa-heart text-rose-400 mr-2"></i>Visit SpecsMax – Your Vision, Our Priority.</span>
+    </span>
+    <span class="flex items-center gap-10 pr-10" aria-hidden="true">
+      <span><i class="fa-solid fa-tags text-sky2 mr-2"></i>Special Offers on Power Glasses – Up to 40% OFF!</span>
+      <span><i class="fa-solid fa-sun text-amber-400 mr-2"></i>Upgrade Your Style with Premium Cooling Glasses.</span>
+      <span><i class="fa-solid fa-eye text-sky2 mr-2"></i>Explore Comfortable Contact Lenses – Starting ₹999.</span>
+      <span><i class="fa-solid fa-heart text-rose-400 mr-2"></i>Visit SpecsMax – Your Vision, Our Priority.</span>
+    </span>
+  </div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 gap-3">
+    <!-- Logo -->
+    <a href="#home" class="flex items-center gap-2 shrink-0">
+      <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-navy to-sky2 flex items-center justify-center text-white text-lg shadow-md">
+        <i class="fa-solid fa-glasses"></i>
+      </span>
+      <span class="font-poppins font-bold text-xl text-navy">Specs<span class="text-sky2-dark">Max</span></span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden lg:flex items-center gap-1 text-sm font-medium">
+      <li><a href="#home" class="px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky2-dark transition">Home</a></li>
+      <li><a href="#categories" class="px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky2-dark transition">Power Glasses</a></li>
+      <li><a href="#categories" class="px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky2-dark transition">Cooling Glasses</a></li>
+      <li><a href="#categories" class="px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky2-dark transition">Contact Lenses</a></li>
+      <li><a href="#offers" class="px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky2-dark transition">Offers</a></li>
+      <li><a href="#about" class="px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky2-dark transition">About Us</a></li>
+      <li><a href="#contact" class="px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky2-dark transition">Contact</a></li>
+    </ul>
+
+    <!-- Right icons -->
+    <div class="flex items-center gap-2">
+      <button id="searchBtn" aria-label="Search products" class="w-10 h-10 rounded-full hover:bg-sky-50 text-navy flex items-center justify-center transition"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button id="cartBtn" aria-label="Open cart" class="relative w-10 h-10 rounded-full hover:bg-sky-50 text-navy flex items-center justify-center transition">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cartCount" class="absolute -top-0.5 -right-0.5 bg-sky2-dark text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+      </button>
+      <button id="menuBtn" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full hover:bg-sky-50 text-navy flex items-center justify-center"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- Search bar (toggle) -->
+  <div id="searchBar" class="hidden max-w-7xl mx-auto px-4 pb-3">
+    <div class="relative">
+      <input id="searchInput" type="text" placeholder="Search glasses, sunglasses, lenses..." class="w-full border border-slate-200 rounded-full pl-5 pr-12 py-2.5 focus:outline-none focus:ring-2 focus:ring-sky2 text-sm">
+      <button onclick="scrollToProducts()" class="absolute right-2 top-1/2 -translate-y-1/2 text-navy hover:text-sky2-dark"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-md">
+    <ul class="px-4 py-3 space-y-1 text-sm font-medium">
+      <li><a href="#home" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-sky-50">Home</a></li>
+      <li><a href="#categories" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-sky-50">Power Glasses</a></li>
+      <li><a href="#categories" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-sky-50">Cooling Glasses</a></li>
+      <li><a href="#categories" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-sky-50">Contact Lenses</a></li>
+      <li><a href="#offers" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-sky-50">Offers</a></li>
+      <li><a href="#about" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-sky-50">About Us</a></li>
+      <li><a href="#contact" class="mobile-link block px-3 py-2.5 rounded-lg hover:bg-sky-50">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="home" class="relative bg-gradient-to-br from-white via-sky-50 to-blue-50 overflow-hidden">
+  <div class="hero-blob w-96 h-96 bg-sky-200 -top-20 -left-20"></div>
+  <div class="hero-blob w-80 h-80 bg-blue-200 bottom-0 right-0"></div>
+
+  <div class="max-w-7xl mx-auto px-4 py-14 md:py-24 grid lg:grid-cols-2 gap-10 items-center relative">
+    <div>
+      <span class="hero-anim inline-flex items-center gap-2 bg-white border border-sky-100 shadow-sm text-navy text-xs md:text-sm font-semibold px-4 py-2 rounded-full mb-5">
+        <i class="fa-solid fa-star text-amber-400"></i> Flat 40% OFF on Premium Eyewear – Limited Time!
+      </span>
+      <h1 class="hero-anim text-4xl md:text-5xl xl:text-6xl font-extrabold text-navy leading-tight">
+        See Better. <span class="gradient-text">Look Better.</span><br>Live Better.
+      </h1>
+      <p class="hero-anim-2 mt-5 text-slate-600 text-base md:text-lg max-w-lg leading-relaxed">
+        Discover premium power glasses, stylish cooling glasses and comfortable contact lenses at SpecsMax – crafted for clarity, comfort and confidence.
+      </p>
+      <div class="hero-anim-3 mt-8 flex flex-wrap gap-4">
+        <a href="#trending" class="inline-flex items-center gap-2 bg-navy hover:bg-navy-light text-white font-semibold px-7 py-3.5 rounded-full shadow-lg shadow-navy/25 transition hover:-translate-y-0.5">
+          Shop Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#categories" class="inline-flex items-center gap-2 bg-white text-navy border-2 border-navy/10 hover:border-sky2 font-semibold px-7 py-3.5 rounded-full shadow-sm transition hover:-translate-y-0.5">
+          Explore Collections
+        </a>
+      </div>
+      <div class="hero-anim-3 mt-10 flex items-center gap-6 text-sm text-slate-500">
+        <div class="flex -space-x-2">
+          <img src="https://i.pravatar.cc/64?img=12" onerror="this.src='https://placehold.co/64x64/e0f2fe/0b2545?text=S'" alt="Customer" class="w-9 h-9 rounded-full border-2 border-white">
+          <img src="https://i.pravatar.cc/64?img=32" onerror="this.src='https://placehold.co/64x64/e0f2fe/0b2545?text=S'" alt="Customer" class="w-9 h-9 rounded-full border-2 border-white">
+          <img src="https://i.pravatar.cc/64?img=47" onerror="this.src='https://placehold.co/64x64/e0f2fe/0b2545?text=S'" alt="Customer" class="w-9 h-9 rounded-full border-2 border-white">
+        </div>
+        <div><span class="text-navy font-bold">5,000+</span> happy customers trust SpecsMax</div>
+      </div>
+    </div>
+
+    <div class="hero-anim-2 relative">
+      <div class="absolute inset-0 bg-gradient-to-tr from-sky2/30 to-navy/20 rounded-[2.5rem] rotate-3 scale-95"></div>
+      <img src="https://kimi-web-img.kimi.ai/img/media.istockphoto.com/1b6fcef492aafc8258deca8c1b1ec6f0c22cc527.jpg"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=900&q=80';"
+           alt="Happy woman wearing premium eyeglasses" class="relative rounded-[2.5rem] w-full h-[320px] md:h-[460px] object-cover shadow-2xl">
+      <div class="absolute -bottom-5 -left-3 md:-left-6 bg-white rounded-2xl shadow-xl px-5 py-4 flex items-center gap-3">
+        <span class="w-11 h-11 rounded-xl bg-sky-100 text-sky2-dark flex items-center justify-center text-lg"><i class="fa-solid fa-shield-halved"></i></span>
+        <div><div class="font-bold text-navy text-sm">100% UV Protection</div><div class="text-xs text-slate-500">Certified premium lenses</div></div>
+      </div>
+      <div class="absolute -top-4 -right-2 md:-right-4 bg-navy text-white rounded-2xl shadow-xl px-5 py-3 rotate-3">
+        <div class="text-amber-400 font-bold text-lg">₹999<span class="text-xs font-medium text-sky-200"> onwards</span></div>
+        <div class="text-[11px] text-sky-100">Starting price</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATEGORIES ============ -->
+<section id="categories" class="py-16 md:py-24 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12 reveal">
+      <span class="text-sky2-dark font-semibold text-sm tracking-widest uppercase">Our Collections</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2">Shop By Category</h2>
+      <p class="text-slate-500 mt-3 max-w-xl mx-auto">From precision power glasses to trendy cooling glasses and comfortable contact lenses – find your perfect fit.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-7">
+      <!-- Power Glasses -->
+      <div class="cat-card reveal bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow group">
+        <div class="h-56 overflow-hidden">
+          <img src="https://kimi-web-img.kimi.ai/img/gemopticians.com/7b8d11848b13a5113355554be057af7b3f4e2319.jpg"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80';"
+               alt="Power glasses" class="w-full h-full object-cover" loading="lazy">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-navy flex items-center gap-2"><i class="fa-solid fa-glasses text-sky2-dark"></i>Power Glasses</h3>
+          <p class="text-sm text-slate-500 mt-2">Reading glasses, computer glasses, blue-light protection, prescription frames & premium stylish frames.</p>
+          <ul class="mt-3 space-y-1 text-xs text-slate-500">
+            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Reading & Computer Glasses</li>
+            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Blue-Light Protection</li>
+            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Prescription & Designer Frames</li>
+          </ul>
+          <a href="#trending" class="mt-5 inline-flex items-center gap-2 text-sky2-dark font-semibold text-sm group-hover:gap-3 transition-all">Explore Products <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Cooling Glasses -->
+      <div class="cat-card reveal bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow group" style="transition-delay:.1s">
+        <div class="h-56 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80"
+               onerror="this.onerror=null;this.src='https://placehold.co/800x560/e0f2fe/0b2545?text=Cooling+Glasses';"
+               alt="Cooling sunglasses" class="w-full h-full object-cover" loading="lazy">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-navy flex items-center gap-2"><i class="fa-solid fa-sun text-amber-500"></i>Cooling Glasses</h3>
+          <p class="text-sm text-slate-500 mt-2">UV protection sunglasses, polarized lenses, men's & women's collections and the latest trendy styles.</p>
+          <ul class="mt-3 space-y-1 text-xs text-slate-500">
+            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>UV & Polarized Protection</li>
+            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Men's & Women's Styles</li>
+            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Trendy New Arrivals</li>
+          </ul>
+          <a href="#trending" class="mt-5 inline-flex items-center gap-2 text-sky2-dark font-semibold text-sm group-hover:gap-3 transition-all">Explore Products <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Contact Lenses -->
+      <div class="cat-card reveal bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow group" style="transition-delay:.2s">
+        <div class="h-56 overflow-hidden">
+          <img src="https://kimi-web-img.kimi.ai/img/www.nvisioncenters.com/fc3949107defe1efc8ceccb1e092f399be7a92ee.jpg"
+               onerror="this.onerror=null;this.src='https://placehold.co/800x560/e0f2fe/0b2545?text=Contact+Lenses';"
+               alt="Contact lenses" class="w-full h-full object-cover" loading="lazy">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-navy flex items-center gap-2"><i class="fa-solid fa-eye text-sky2-dark"></i>Contact Lenses</h3>
+          <p class="text-sm text-slate-500 mt-2">Daily disposables, monthly lenses, coloured & transparent lenses plus all lens care accessories.</p>
+          <ul class="mt-3 space-y-1 text-xs text-slate-500">
+            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Daily & Monthly Disposables</li>
+            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Coloured & Transparent Lenses</li>
+            <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i>Lens Solutions & Accessories</li>
+          </ul>
+          <a href="#trending" class="mt-5 inline-flex items-center gap-2 text-sky2-dark font-semibold text-sm group-hover:gap-3 transition-all">Explore Products <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRENDING PRODUCTS ============ -->
+<section id="trending" class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-10 reveal">
+      <div>
+        <span class="text-sky2-dark font-semibold text-sm tracking-widest uppercase">Handpicked For You</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2">Trending Products</h2>
+      </div>
+      <div class="hidden md:flex gap-2">
+        <button onclick="scrollTrend(-1)" class="w-11 h-11 rounded-full border border-slate-200 text-navy hover:bg-navy hover:text-white transition"><i class="fa-solid fa-chevron-left"></i></button>
+        <button onclick="scrollTrend(1)" class="w-11 h-11 rounded-full border border-slate-200 text-navy hover:bg-navy hover:text-white transition"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <div id="productGrid" class="flex md:grid md:grid-cols-3 xl:grid-cols-4 gap-6 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory pb-2 -mx-4 px-4 md:mx-0 md:px-0">
+      <!-- Cards are rendered by JavaScript -->
+    </div>
+    <p id="noResults" class="hidden text-center text-slate-400 py-10">No products match your search. Try "glasses", "sunglasses" or "lenses".</p>
+  </div>
+</section>
+
+<!-- ============ OFFERS ============ -->
+<section id="offers" class="py-16 md:py-24 bg-gradient-to-br from-navy via-navy-light to-navy relative overflow-hidden">
+  <div class="hero-blob w-96 h-96 bg-sky2/20 -top-32 right-0"></div>
+  <div class="max-w-7xl mx-auto px-4 relative">
+    <div class="text-center mb-12 reveal">
+      <span class="text-sky2 font-semibold text-sm tracking-widest uppercase">Limited Time</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">Special Offers & Deals</h2>
+      <p class="text-sky-100/80 mt-3 max-w-xl mx-auto">Grab combo offers, seasonal promotions and exclusive discounts before they're gone.</p>
+    </div>
+
+    <div class="relative reveal">
+      <div class="relative h-[420px] md:h-[380px] rounded-3xl overflow-hidden shadow-2xl">
+        <!-- Slide 1 -->
+        <div class="offer-slide active bg-gradient-to-r from-sky-600 to-sky-400">
+          <div class="grid md:grid-cols-2 h-full items-center">
+            <div class="p-8 md:p-12 text-white">
+              <span class="bg-white/20 text-xs font-bold px-3 py-1 rounded-full">COMBO OFFER</span>
+              <h3 class="text-3xl md:text-4xl font-bold mt-4 leading-tight">Buy 1 Get 1 Free<br>on Power Glasses</h3>
+              <p class="mt-3 text-sky-50/90 text-sm md:text-base">Complete eyewear + free premium frames. Valid on selected collections.</p>
+              <a href="#trending" class="mt-6 inline-flex items-center gap-2 bg-white text-sky-700 font-bold px-6 py-3 rounded-full shadow-lg hover:-translate-y-0.5 transition">Shop Offer <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="hidden md:block h-full">
+              <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80" onerror="this.src='https://placehold.co/800x600/0ea5e9/ffffff?text=Offer'" alt="Sunglasses offer" class="w-full h-full object-cover" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="offer-slide bg-gradient-to-r from-amber-500 to-orange-400">
+          <div class="grid md:grid-cols-2 h-full items-center">
+            <div class="p-8 md:p-12 text-white">
+              <span class="bg-white/20 text-xs font-bold px-3 py-1 rounded-full">SEASONAL SALE</span>
+              <h3 class="text-3xl md:text-4xl font-bold mt-4 leading-tight">Flat 40% OFF<br>Polarized Sunglasses</h3>
+              <p class="mt-3 text-orange-50/90 text-sm md:text-base">Beat the Chennai heat with premium UV protection. Hurry, stock is limited!</p>
+              <a href="#trending" class="mt-6 inline-flex items-center gap-2 bg-white text-orange-600 font-bold px-6 py-3 rounded-full shadow-lg hover:-translate-y-0.5 transition">Shop Offer <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="hidden md:block h-full">
+              <img src="https://kimi-web-img.kimi.ai/img/media.istockphoto.com/711b567483dd7c3ba9d706bf428cddf685ce400c.jpg" onerror="this.src='https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80';" alt="Man wearing sunglasses" class="w-full h-full object-cover" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="offer-slide bg-gradient-to-r from-violet-600 to-fuchsia-500">
+          <div class="grid md:grid-cols-2 h-full items-center">
+            <div class="p-8 md:p-12 text-white">
+              <span class="bg-white/20 text-xs font-bold px-3 py-1 rounded-full">LENS LOVERS</span>
+              <h3 class="text-3xl md:text-4xl font-bold mt-4 leading-tight">Contact Lenses<br>Starting ₹999</h3>
+              <p class="mt-3 text-violet-50/90 text-sm md:text-base">Daily & monthly disposables with a free lens case on every purchase.</p>
+              <a href="#trending" class="mt-6 inline-flex items-center gap-2 bg-white text-violet-700 font-bold px-6 py-3 rounded-full shadow-lg hover:-translate-y-0.5 transition">Shop Offer <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="hidden md:block h-full">
+              <img src="https://kimi-web-img.kimi.ai/img/www.nvisioncenters.com/fc3949107defe1efc8ceccb1e092f399be7a92ee.jpg" onerror="this.src='https://placehold.co/800x600/8b5cf6/ffffff?text=Contact+Lenses'" alt="Contact lenses offer" class="w-full h-full object-cover" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel controls -->
+      <button onclick="offerSlide(-1)" aria-label="Previous offer" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur flex items-center justify-center transition"><i class="fa-solid fa-chevron-left"></i></button>
+      <button onclick="offerSlide(1)" aria-label="Next offer" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur flex items-center justify-center transition"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="flex justify-center gap-2 mt-6">
+        <button onclick="offerGo(0)" class="dot active w-2.5 h-2.5 rounded-full bg-white/40" aria-label="Slide 1"></button>
+        <button onclick="offerGo(1)" class="dot w-2.5 h-2.5 rounded-full bg-white/40" aria-label="Slide 2"></button>
+        <button onclick="offerGo(2)" class="dot w-2.5 h-2.5 rounded-full bg-white/40" aria-label="Slide 3"></button>
+      </div>
+    </div>
+
+    <!-- Mini offer banners -->
+    <div class="grid sm:grid-cols-3 gap-5 mt-10">
+      <div class="reveal bg-white/10 backdrop-blur border border-white/15 rounded-2xl p-5 text-white hover:bg-white/15 transition">
+        <i class="fa-solid fa-percent text-amber-400 text-xl"></i>
+        <h4 class="font-bold mt-3">Student Discount</h4>
+        <p class="text-xs text-sky-100/70 mt-1">Extra 10% OFF with valid student ID.</p>
+      </div>
+      <div class="reveal bg-white/10 backdrop-blur border border-white/15 rounded-2xl p-5 text-white hover:bg-white/15 transition" style="transition-delay:.1s">
+        <i class="fa-solid fa-gift text-rose-400 text-xl"></i>
+        <h4 class="font-bold mt-3">Festive Combo</h4>
+        <p class="text-xs text-sky-100/70 mt-1">Free cleaning kit with every frame purchase.</p>
+      </div>
+      <div class="reveal bg-white/10 backdrop-blur border border-white/15 rounded-2xl p-5 text-white hover:bg-white/15 transition" style="transition-delay:.2s">
+        <i class="fa-solid fa-truck-fast text-emerald-400 text-xl"></i>
+        <h4 class="font-bold mt-3">Free Home Trial</h4>
+        <p class="text-xs text-sky-100/70 mt-1">Try frames at home within 5 km radius.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section id="about" class="py-16 md:py-24 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12 reveal">
+      <span class="text-sky2-dark font-semibold text-sm tracking-widest uppercase">Why SpecsMax</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2">Why Choose SpecsMax?</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition text-center">
+        <span class="w-14 h-14 mx-auto rounded-2xl bg-sky-100 text-sky2-dark flex items-center justify-center text-2xl"><i class="fa-solid fa-award"></i></span>
+        <h4 class="font-bold text-navy mt-4">Premium Quality Eyewear</h4>
+        <p class="text-sm text-slate-500 mt-2">Genuine branded frames and lenses with quality certification.</p>
+      </div>
+      <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition text-center" style="transition-delay:.05s">
+        <span class="w-14 h-14 mx-auto rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+        <h4 class="font-bold text-navy mt-4">Affordable Pricing</h4>
+        <p class="text-sm text-slate-500 mt-2">Honest prices and regular deals for every budget.</p>
+      </div>
+      <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition text-center" style="transition-delay:.1s">
+        <span class="w-14 h-14 mx-auto rounded-2xl bg-violet-100 text-violet-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-couch"></i></span>
+        <h4 class="font-bold text-navy mt-4">Comfortable Designs</h4>
+        <p class="text-sm text-slate-500 mt-2">Feather-light frames designed for all-day comfort.</p>
+      </div>
+      <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition text-center">
+        <span class="w-14 h-14 mx-auto rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <h4 class="font-bold text-navy mt-4">Latest Collections</h4>
+        <p class="text-sm text-slate-500 mt-2">New styles added every month, straight from trends.</p>
+      </div>
+      <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition text-center" style="transition-delay:.05s">
+        <span class="w-14 h-14 mx-auto rounded-2xl bg-rose-100 text-rose-500 flex items-center justify-center text-2xl"><i class="fa-solid fa-heart"></i></span>
+        <h4 class="font-bold text-navy mt-4">Customer Satisfaction</h4>
+        <p class="text-sm text-slate-500 mt-2">5,000+ happy customers and counting across Chennai.</p>
+      </div>
+      <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition text-center" style="transition-delay:.1s">
+        <span class="w-14 h-14 mx-auto rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-headset"></i></span>
+        <h4 class="font-bold text-navy mt-4">Friendly Support</h4>
+        <p class="text-sm text-slate-500 mt-2">Reach us on WhatsApp or call – we reply fast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="text-center mb-10 reveal">
+      <span class="text-sky2-dark font-semibold text-sm tracking-widest uppercase">Testimonials</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2">What Customers Say</h2>
+      <p class="text-slate-400 text-xs mt-2">Sample testimonials shown for design demonstration.</p>
+    </div>
+
+    <div class="relative reveal">
+      <div class="overflow-hidden rounded-3xl">
+        <div id="reviewTrack" class="flex transition-transform duration-700 ease-in-out">
+          <!-- review 1 -->
+          <div class="min-w-full bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-10 text-center">
+            <img src="https://i.pravatar.cc/100?img=5" onerror="this.src='https://placehold.co/100x100/e0f2fe/0b2545?text=A'" alt="Anitha R" class="w-16 h-16 rounded-full mx-auto ring-4 ring-sky-100">
+            <div class="text-amber-400 mt-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p class="mt-4 text-slate-600 italic max-w-xl mx-auto">"Got my blue-cut computer glasses here. The staff helped me pick a frame that suits my face perfectly. Great quality at a very fair price!"</p>
+            <h4 class="font-bold text-navy mt-4">Anitha R.</h4>
+            <span class="text-xs text-slate-400">Perungudi • Power Glasses</span>
+          </div>
+          <!-- review 2 -->
+          <div class="min-w-full bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-10 text-center">
+            <img src="https://i.pravatar.cc/100?img=13" onerror="this.src='https://placehold.co/100x100/e0f2fe/0b2545?text=V'" alt="Vignesh K" class="w-16 h-16 rounded-full mx-auto ring-4 ring-sky-100">
+            <div class="text-amber-400 mt-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p class="mt-4 text-slate-600 italic max-w-xl mx-auto">"Bought polarized sunglasses for my bike trips. Genuine product, quick service, and the combo offer saved me a lot. Highly recommended."</p>
+            <h4 class="font-bold text-navy mt-4">Vignesh K.</h4>
+            <span class="text-xs text-slate-400">Thoraipakkam • Cooling Glasses</span>
+          </div>
+          <!-- review 3 -->
+          <div class="min-w-full bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-10 text-center">
+            <img src="https://i.pravatar.cc/100?img=47" onerror="this.src='https://placehold.co/100x100/e0f2fe/0b2545?text=P'" alt="Priya S" class="w-16 h-16 rounded-full mx-auto ring-4 ring-sky-100">
+            <div class="text-amber-400 mt-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+            <p class="mt-4 text-slate-600 italic max-w-xl mx-auto">"First time trying contact lenses and the team patiently taught me how to use and care for them. Monthly lenses are super comfortable."</p>
+            <h4 class="font-bold text-navy mt-4">Priya S.</h4>
+            <span class="text-xs text-slate-400">Velachery • Contact Lenses</span>
+          </div>
+          <!-- review 4 -->
+          <div class="min-w-full bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-10 text-center">
+            <img src="https://i.pravatar.cc/100?img=59" onerror="this.src='https://placehold.co/100x100/e0f2fe/0b2545?text=M'" alt="Mohammed F" class="w-16 h-16 rounded-full mx-auto ring-4 ring-sky-100">
+            <div class="text-amber-400 mt-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p class="mt-4 text-slate-600 italic max-w-xl mx-auto">"Premium cat-eye frames for my wife – she loves them! Easy WhatsApp ordering and doorstep delivery. SpecsMax is now our family optician."</p>
+            <h4 class="font-bold text-navy mt-4">Mohammed F.</h4>
+            <span class="text-xs text-slate-400">Adyar • Premium Frames</span>
+          </div>
+        </div>
+      </div>
+      <button onclick="reviewSlide(-1)" aria-label="Previous review" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow text-navy hover:bg-navy hover:text-white transition"><i class="fa-solid fa-chevron-left"></i></button>
+      <button onclick="reviewSlide(1)" aria-label="Next review" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow text-navy hover:bg-navy hover:text-white transition"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="flex justify-center gap-2 mt-6" id="reviewDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORE LOCATION ============ -->
+<section class="py-16 md:py-24 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12 reveal">
+      <span class="text-sky2-dark font-semibold text-sm tracking-widest uppercase">Visit Us</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2">Find Our Store</h2>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+      <div class="reveal rounded-3xl overflow-hidden shadow-lg min-h-[320px]">
+        <iframe title="SpecsMax store location – Kandhanchavadi, Perungudi, Chennai"
+          src="https://www.google.com/maps?q=Kandhanchavadi%2C%20Perungudi%2C%20Chennai%2C%20Tamil%20Nadu%20600096&output=embed"
+          class="w-full h-full min-h-[320px] border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <div class="reveal bg-white rounded-3xl shadow-lg p-8 flex flex-col justify-center" style="transition-delay:.1s">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-12 h-12 rounded-2xl bg-navy text-white flex items-center justify-center text-xl"><i class="fa-solid fa-location-dot"></i></span>
+          <div><h3 class="font-bold text-navy text-lg">SpecsMax</h3><p class="text-xs text-slate-400">Optical Store</p></div>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed"><i class="fa-solid fa-map-pin text-sky2-dark mr-2"></i>Kandhanchavadi, Perungudi, Chennai, Tamil Nadu – 600096</p>
+        <a href="tel:+916380463408" class="mt-4 flex items-center gap-3 text-navy font-semibold hover:text-sky2-dark transition">
+          <span class="w-10 h-10 rounded-full bg-sky-100 text-sky2-dark flex items-center justify-center"><i class="fa-solid fa-phone"></i></span> +91 63804 63408
+        </a>
+        <div class="mt-6 text-sm text-slate-500 space-y-1.5">
+          <p><i class="fa-regular fa-clock text-sky2-dark mr-2"></i>Mon – Sat: 10:00 AM – 9:00 PM</p>
+          <p><i class="fa-regular fa-clock text-sky2-dark mr-2"></i>Sunday: 11:00 AM – 7:00 PM</p>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Kandhanchavadi,+Perungudi,+Chennai,+Tamil+Nadu+600096" target="_blank" rel="noopener"
+           class="mt-7 inline-flex items-center justify-center gap-2 bg-navy hover:bg-navy-light text-white font-semibold px-6 py-3.5 rounded-full shadow-lg shadow-navy/20 transition hover:-translate-y-0.5">
+          <i class="fa-solid fa-diamond-turn-right"></i> Get Directions
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12 reveal">
+      <span class="text-sky2-dark font-semibold text-sm tracking-widest uppercase">Get In Touch</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-navy mt-2">Contact SpecsMax</h2>
+      <p class="text-slate-500 mt-3 max-w-xl mx-auto">Have a question about frames, lenses or offers? Send us a message and we'll reply on WhatsApp.</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-8">
+      <div class="reveal bg-slate-50 rounded-3xl p-8 border border-slate-100">
+        <h3 class="font-bold text-navy text-lg mb-5">Store Information</h3>
+        <ul class="space-y-4 text-sm text-slate-600">
+          <li class="flex gap-3"><i class="fa-solid fa-shop text-sky2-dark mt-1"></i><div><strong class="text-navy">SpecsMax</strong><br>Kandhanchavadi, Perungudi,<br>Chennai, Tamil Nadu – 600096</div></li>
+          <li class="flex gap-3"><i class="fa-solid fa-phone text-sky2-dark mt-1"></i><a href="tel:+916380463408" class="hover:text-sky2-dark">+91 63804 63408</a></li>
+          <li class="flex gap-3"><i class="fa-brands fa-whatsapp text-emerald-500 mt-1"></i><a href="https://wa.me/916380463408?text=Hello%20SpecsMax%2C%20I%20am%20interested%20in%20your%20optical%20products.%20Please%20share%20the%20details." target="_blank" rel="noopener" class="hover:text-sky2-dark">Chat on WhatsApp</a></li>
+          <li class="flex gap-3"><i class="fa-regular fa-clock text-sky2-dark mt-1"></i><div>Mon – Sat: 10 AM – 9 PM<br>Sunday: 11 AM – 7 PM</div></li>
+        </ul>
+        <div class="mt-6 p-4 bg-sky-50 rounded-2xl text-xs text-slate-500 flex gap-2">
+          <i class="fa-solid fa-circle-info text-sky2-dark mt-0.5"></i>
+          Messages are sent to our WhatsApp business chat for the fastest response.
+        </div>
+      </div>
+
+      <form id="contactForm" class="reveal bg-white rounded-3xl p-8 border border-slate-100 shadow-md" novalidate>
+        <div class="mb-4">
+          <label for="cfName" class="block text-sm font-semibold text-navy mb-1.5">Your Name</label>
+          <input id="cfName" type="text" required placeholder="Enter your name" class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky2 text-sm">
+          <p class="err text-rose-500 text-xs mt-1 hidden">Please enter your name.</p>
+        </div>
+        <div class="mb-4">
+          <label for="cfPhone" class="block text-sm font-semibold text-navy mb-1.5">Phone Number</label>
+          <input id="cfPhone" type="tel" required placeholder="10-digit mobile number" class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky2 text-sm">
+          <p class="err text-rose-500 text-xs mt-1 hidden">Please enter a valid 10-digit phone number.</p>
+        </div>
+        <div class="mb-5">
+          <label for="cfMsg" class="block text-sm font-semibold text-navy mb-1.5">Message</label>
+          <textarea id="cfMsg" required rows="4" placeholder="Which product are you interested in?" class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky2 text-sm resize-none"></textarea>
+          <p class="err text-rose-500 text-xs mt-1 hidden">Please write a short message.</p>
+        </div>
+        <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-navy hover:bg-navy-light text-white font-semibold px-6 py-3.5 rounded-full shadow-lg transition hover:-translate-y-0.5">
+          <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+        </button>
+        <p id="formNote" class="hidden text-xs text-emerald-600 mt-3 text-center"><i class="fa-solid fa-circle-check mr-1"></i>Opening WhatsApp with your message…</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-navy text-sky-100 pt-14 pb-6">
+  <div class="max-w-7xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <a href="#home" class="flex items-center gap-2">
+        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky2 to-sky2-dark flex items-center justify-center text-white text-lg"><i class="fa-solid fa-glasses"></i></span>
+        <span class="font-poppins font-bold text-xl text-white">Specs<span class="text-sky2">Max</span></span>
+      </a>
+      <p class="text-sm text-sky-200/70 mt-4 leading-relaxed">Your Vision, Our Priority. Premium power glasses, cooling glasses and contact lenses at honest prices in Chennai.</p>
+      <div class="flex gap-3 mt-5">
+        <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full bg-white/10 hover:bg-sky2 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full bg-white/10 hover:bg-sky2 flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="X" class="w-9 h-9 rounded-full bg-white/10 hover:bg-sky2 flex items-center justify-center transition"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-full bg-white/10 hover:bg-sky2 flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4 class="font-bold text-white mb-4">Quick Links</h4>
+      <ul class="space-y-2.5 text-sm text-sky-200/70">
+        <li><a href="#home" class="hover:text-sky2 transition">Home</a></li>
+        <li><a href="#offers" class="hover:text-sky2 transition">Offers</a></li>
+        <li><a href="#about" class="hover:text-sky2 transition">About Us</a></li>
+        <li><a href="#contact" class="hover:text-sky2 transition">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold text-white mb-4">Categories</h4>
+      <ul class="space-y-2.5 text-sm text-sky-200/70">
+        <li><a href="#categories" class="hover:text-sky2 transition">Power Glasses</a></li>
+        <li><a href="#categories" class="hover:text-sky2 transition">Cooling Glasses</a></li>
+        <li><a href="#categories" class="hover:text-sky2 transition">Contact Lenses</a></li>
+        <li><a href="#trending" class="hover:text-sky2 transition">Trending Products</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold text-white mb-4">Contact</h4>
+      <ul class="space-y-2.5 text-sm text-sky-200/70">
+        <li><i class="fa-solid fa-location-dot text-sky2 mr-2"></i>Kandhanchavadi, Perungudi, Chennai – 600096</li>
+        <li><a href="tel:+916380463408" class="hover:text-sky2 transition"><i class="fa-solid fa-phone text-sky2 mr-2"></i>+91 63804 63408</a></li>
+        <li><a href="https://wa.me/916380463408" target="_blank" rel="noopener" class="hover:text-sky2 transition"><i class="fa-brands fa-whatsapp text-sky2 mr-2"></i>WhatsApp Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 mt-10 pt-6 border-t border-white/10 text-center text-xs text-sky-200/50">
+    © 2026 SpecsMax. All rights reserved. Crafted with <i class="fa-solid fa-heart text-rose-400"></i> in Chennai.
+  </div>
+</footer>
+
+<!-- ============ FLOATING BUTTONS ============ -->
+<div class="fixed bottom-5 right-5 z-40 flex flex-col gap-3">
+  <a href="https://wa.me/916380463408?text=Hello%20SpecsMax%2C%20I%20am%20interested%20in%20your%20optical%20products.%20Please%20share%20the%20details." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+     class="float-btn w-14 h-14 rounded-full bg-[#25D366] text-white text-2xl flex items-center justify-center shadow-lg shadow-emerald-500/40">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+  <a href="tel:+916380463408" aria-label="Call SpecsMax"
+     class="float-btn w-14 h-14 rounded-full bg-sky2-dark text-white text-xl flex items-center justify-center shadow-lg shadow-sky-500/40" style="animation-delay:.6s">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+</div>
+
+<!-- Back to top -->
+<button id="backToTop" aria-label="Back to top" class="fixed bottom-5 left-5 z-40 w-12 h-12 rounded-full bg-navy text-white shadow-lg flex items-center justify-center hover:bg-navy-light transition"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- ============ CART DRAWER ============ -->
+<div id="cartOverlay" class="fixed inset-0 bg-navy/50 backdrop-blur-sm z-50 hidden"></div>
+<aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
+  <div class="flex items-center justify-between p-5 border-b border-slate-100">
+    <h3 class="font-bold text-navy text-lg"><i class="fa-solid fa-cart-shopping text-sky2-dark mr-2"></i>Your Cart</h3>
+    <button onclick="toggleCart(false)" aria-label="Close cart" class="w-9 h-9 rounded-full hover:bg-slate-100 text-slate-500"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
+  <div class="p-5 border-t border-slate-100">
+    <div class="flex justify-between font-bold text-navy mb-4"><span>Total</span><span id="cartTotal">₹0</span></div>
+    <a id="checkoutBtn" href="#" target="_blank" rel="noopener" class="block text-center bg-navy hover:bg-navy-light text-white font-semibold py-3.5 rounded-full transition"><i class="fa-brands fa-whatsapp mr-2"></i>Order via WhatsApp</a>
+    <button onclick="clearCart()" class="w-full mt-2 text-xs text-slate-400 hover:text-rose-500 transition">Clear cart</button>
+  </div>
+</aside>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-navy text-white text-sm px-5 py-3 rounded-full shadow-xl opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<script>
+/* ================= DATA ================= */
+const PRODUCTS = [
+  { id:1, name:"Classic Round Power Glasses", cat:"Power Glasses", old:2499, price:1499, off:40, rating:5, badge:"Best Seller",
+    img:"https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=600&q=80" },
+  { id:2, name:"Blue-Cut Computer Glasses", cat:"Power Glasses", old:1999, price:1299, off:35, rating:5, badge:"Trending",
+    img:"https://kimi-web-img.kimi.ai/img/media-dynamic.okendo.io/6068df921b7279a326af593e8bab2214e8262f2d.jpg",
+    fallback:"https://images.unsplash.com/photo-1556306535-0f09a537f0a3?auto=format&fit=crop&w=600&q=80" },
+  { id:3, name:"Aviator Polarized Sunglasses", cat:"Cooling Glasses", old:3499, price:2199, off:37, rating:5, badge:"Best Seller",
+    img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80" },
+  { id:4, name:"Cat-Eye Premium Frames", cat:"Power Glasses", old:2999, price:1799, off:40, rating:4, badge:"New",
+    img:"https://kimi-web-img.kimi.ai/img/m.media-amazon.com/b8c2f09f2fa9cd1d4211590c12525b9f524f3113.jpg",
+    fallback:"https://images.unsplash.com/photo-1614715838608-dd527c46231d?auto=format&fit=crop&w=600&q=80" },
+  { id:5, name:"Rimless Gold Power Glasses", cat:"Power Glasses", old:3999, price:2499, off:38, rating:5, badge:"Premium",
+    img:"https://kimi-web-img.kimi.ai/img/gemopticians.com/7b8d11848b13a5113355554be057af7b3f4e2319.jpg",
+    fallback:"https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=600&q=80" },
+  { id:6, name:"Retro Cool Sunglasses", cat:"Cooling Glasses", old:2599, price:1599, off:38, rating:4, badge:"Trending",
+    img:"https://kimi-web-img.kimi.ai/img/cdn.prod.website-files.com/a9cd5ef1195c51bc24cf50a9c33cf7fc1ce8e66d.jpg",
+    fallback:"https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=600&q=80" },
+  { id:7, name:"Daily Fresh Contact Lenses (30 Pack)", cat:"Contact Lenses", old:1499, price:999, off:33, rating:5, badge:"Best Seller",
+    img:"https://kimi-web-img.kimi.ai/img/www.nvisioncenters.com/fc3949107defe1efc8ceccb1e092f399be7a92ee.jpg",
+    fallback:"https://placehold.co/600x450/e0f2fe/0b2545?text=Contact+Lenses" },
+  { id:8, name:"Reading Comfort Glasses", cat:"Power Glasses", old:1399, price:899, off:36, rating:4, badge:"Value Pick",
+    img:"https://images.unsplash.com/photo-1587400873526-1a10cfff54f8?auto=format&fit=crop&w=600&q=80" },
+];
+
+const WA_NUMBER = "916380463408";
+
+/* ================= HELPERS ================= */
+const $ = s => document.querySelector(s);
+const fmt = n => "₹" + n.toLocaleString("en-IN");
+function imgFallback(p){ return `this.onerror=null;this.src='${p.fallback||("https://placehold.co/600x450/e0f2fe/0b2545?text="+encodeURIComponent(p.name))}';`; }
+function showToast(msg){ const t=$("#toast"); t.textContent=msg; t.style.opacity=1; clearTimeout(t._h); t._h=setTimeout(()=>t.style.opacity=0,2200); }
+
+/* ================= RENDER PRODUCTS ================= */
+function starIcons(r){
+  let s=""; for(let i=1;i<=5;i++){ s += `<i class="fa-solid fa-star ${i<=r?'':'fa-regular'} text-amber-400 text-xs"></i>`; } return s;
+}
+function renderProducts(){
+  $("#productGrid").innerHTML = PRODUCTS.map(p=>`
+    <div class="product-card snap-start shrink-0 w-72 md:w-auto bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm" data-name="${p.name.toLowerCase()} ${p.cat.toLowerCase()}">
+      <div class="relative h-52 overflow-hidden bg-slate-50">
+        <img src="${p.img}" onerror="${imgFallback(p)}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover">
+        <span class="absolute top-3 left-3 bg-rose-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full">${p.off}% OFF</span>
+        <span class="absolute top-3 right-3 bg-navy/90 text-white text-[11px] font-semibold px-2.5 py-1 rounded-full"><i class="fa-solid fa-bolt text-amber-400 mr-1"></i>${p.badge}</span>
+      </div>
+      <div class="p-5">
+        <span class="text-[11px] font-semibold text-sky2-dark uppercase tracking-wide">${p.cat}</span>
+        <h3 class="font-bold text-navy text-sm mt-1 leading-snug">${p.name}</h3>
+        <div class="mt-2">${starIcons(p.rating)} <span class="text-xs text-slate-400 ml-1">(${p.rating}.0)</span></div>
+        <div class="mt-3 flex items-center gap-2">
+          <span class="font-bold text-navy text-lg">${fmt(p.price)}</span>
+          <span class="text-slate-400 line-through text-sm">${fmt(p.old)}</span>
+        </div>
+        <div class="mt-4 flex gap-2">
+          <button onclick="addToCart(${p.id})" class="flex-1 bg-navy hover:bg-navy-light text-white text-xs font-semibold py-2.5 rounded-full transition"><i class="fa-solid fa-cart-plus mr-1"></i> Add to Cart</button>
+          <button onclick="quickView(${p.id})" class="flex-1 border border-slate-200 hover:border-sky2 hover:text-sky2-dark text-navy text-xs font-semibold py-2.5 rounded-full transition"><i class="fa-regular fa-eye mr-1"></i> Details</button>
+        </div>
+      </div>
+    </div>`).join("");
+}
+function quickView(id){
+  const p = PRODUCTS.find(x=>x.id===id);
+  showToast(`${p.name} — ${fmt(p.price)} (${p.off}% off). Tap "Add to Cart" or order on WhatsApp!`);
+}
+
+/* ================= CART ================= */
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("specsmax_cart")||"[]"); } catch(e){ cart = []; }
+
+function saveCart(){ localStorage.setItem("specsmax_cart", JSON.stringify(cart)); }
+function cartQty(){ return cart.reduce((a,i)=>a+i.qty,0); }
+function cartTotal(){ return cart.reduce((a,i)=>a + i.qty * PRODUCTS.find(p=>p.id===i.id).price, 0); }
+
+function updateBadge(){
+  const b = $("#cartCount"); b.textContent = cartQty();
+  b.classList.remove("badge-pop"); void b.offsetWidth; b.classList.add("badge-pop");
+}
+function addToCart(id){
+  const item = cart.find(i=>i.id===id);
+  if(item) item.qty++; else cart.push({id, qty:1});
+  saveCart(); updateBadge(); renderCart();
+  const p = PRODUCTS.find(x=>x.id===id);
+  showToast(`${p.name} added to cart ✓`);
+}
+function removeFromCart(id){ cart = cart.filter(i=>i.id!==id); saveCart(); updateBadge(); renderCart(); }
+function clearCart(){ cart = []; saveCart(); updateBadge(); renderCart(); }
+
+function renderCart(){
+  const box = $("#cartItems");
+  if(!cart.length){
+    box.innerHTML = `<div class="text-center text-slate-400 py-16"><i class="fa-solid fa-cart-shopping text-4xl mb-3"></i><p class="text-sm">Your cart is empty.</p><p class="text-xs mt-1">Add some stylish eyewear!</p></div>`;
+  } else {
+    box.innerHTML = cart.map(i=>{
+      const p = PRODUCTS.find(x=>x.id===i.id);
+      return `<div class="flex gap-3 items-center bg-slate-50 rounded-2xl p-3">
+        <img src="${p.img}" onerror="${imgFallback(p)}" alt="${p.name}" class="w-16 h-14 object-cover rounded-xl">
+        <div class="flex-1 min-w-0">
+          <p class="text-xs font-semibold text-navy truncate">${p.name}</p>
+          <p class="text-xs text-slate-500">${fmt(p.price)} × ${i.qty}</p>
+          <div class="flex gap-2 mt-1">
+            <button onclick="chQty(${p.id},-1)" class="w-6 h-6 rounded-full bg-white border border-slate-200 text-xs"><i class="fa-solid fa-minus"></i></button>
+            <button onclick="chQty(${p.id},1)" class="w-6 h-6 rounded-full bg-white border border-slate-200 text-xs"><i class="fa-solid fa-plus"></i></button>
+          </div>
+        </div>
+        <button onclick="removeFromCart(${p.id})" class="text-slate-300 hover:text-rose-500"><i class="fa-solid fa-trash-can"></i></button>
+      </div>`;
+    }).join("");
+  }
+  $("#cartTotal").textContent = fmt(cartTotal());
+  const msg = "Hello SpecsMax, I would like to order:\n" + cart.map(i=>{const p=PRODUCTS.find(x=>x.id===i.id); return `- ${p.name} x${i.qty} (${fmt(p.price*i.qty)})`;}).join("\n") + `\nTotal: ${fmt(cartTotal())}`;
+  $("#checkoutBtn").href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
+function chQty(id,d){ const it=cart.find(i=>i.id===id); if(!it) return; it.qty+=d; if(it.qty<1) cart=cart.filter(i=>i.id!==id); saveCart(); updateBadge(); renderCart(); }
+
+function toggleCart(open){
+  $("#cartDrawer").classList.toggle("translate-x-full", !open);
+  $("#cartOverlay").classList.toggle("hidden", !open);
+  document.body.style.overflow = open ? "hidden" : "";
+}
+
+/* ================= NAV / SEARCH ================= */
+$("#menuBtn").addEventListener("click", ()=> $("#mobileMenu").classList.toggle("hidden"));
+document.querySelectorAll(".mobile-link").forEach(a=>a.addEventListener("click", ()=> $("#mobileMenu").classList.add("hidden")));
+$("#searchBtn").addEventListener("click", ()=>{ $("#searchBar").classList.toggle("hidden"); $("#searchInput").focus(); });
+$("#cartBtn").addEventListener("click", ()=>{ renderCart(); toggleCart(true); });
+$("#cartOverlay").addEventListener("click", ()=>toggleCart(false));
+
+$("#searchInput").addEventListener("input", e=>{
+  const q = e.target.value.trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll("#productGrid > div").forEach(card=>{
+    const show = !q || card.dataset.name.includes(q);
+    card.style.display = show ? "" : "none";
+    if(show) visible++;
+  });
+  $("#noResults").classList.toggle("hidden", visible>0);
+});
+function scrollToProducts(){ document.getElementById("trending").scrollIntoView({behavior:"smooth"}); }
+
+/* ================= SCROLL TRENDING ================= */
+function scrollTrend(dir){ $("#productGrid").scrollBy({left: dir*300, behavior:"smooth"}); }
+
+/* ================= OFFERS CAROUSEL ================= */
+let offerIdx = 0, offerTimer;
+const slides = document.querySelectorAll(".offer-slide");
+const dots = document.querySelectorAll(".dot");
+function offerGo(i){
+  offerIdx = (i + slides.length) % slides.length;
+  slides.forEach((s,k)=>s.classList.toggle("active", k===offerIdx));
+  dots.forEach((d,k)=>d.classList.toggle("active", k===offerIdx));
+  restartOfferTimer();
+}
+function offerSlide(d){ offerGo(offerIdx + d); }
+function restartOfferTimer(){ clearInterval(offerTimer); offerTimer = setInterval(()=>offerGo(offerIdx+1), 5000); }
+restartOfferTimer();
+
+/* ================= REVIEWS CAROUSEL ================= */
+let revIdx = 0; const revCount = 4; let revTimer;
+const dotsBox = $("#reviewDots");
+for(let i=0;i<revCount;i++){
+  const b = document.createElement("button");
+  b.className = "dot w-2.5 h-2.5 rounded-full bg-slate-300";
+  b.setAttribute("aria-label","Review "+(i+1));
+  b.onclick = ()=>{ revGo(i); restartRevTimer(); };
+  dotsBox.appendChild(b);
+}
+function revGo(i){
+  revIdx = (i + revCount) % revCount;
+  $("#reviewTrack").style.transform = `translateX(-${revIdx*100}%)`;
+  dotsBox.querySelectorAll(".dot").forEach((d,k)=>{ d.classList.toggle("active",k===revIdx); d.classList.toggle("bg-slate-300",k!==revIdx); });
+}
+function reviewSlide(d){ revGo(revIdx + d); restartRevTimer(); }
+function restartRevTimer(){ clearInterval(revTimer); revTimer = setInterval(()=>revGo(revIdx+1), 6000); }
+revGo(0); restartRevTimer();
+
+/* ================= BACK TO TOP ================= */
+window.addEventListener("scroll", ()=>{ $("#backToTop").classList.toggle("show", window.scrollY > 500); });
+$("#backToTop").addEventListener("click", ()=>window.scrollTo({top:0, behavior:"smooth"}));
+
+/* ================= CONTACT FORM ================= */
+$("#contactForm").addEventListener("submit", e=>{
+  e.preventDefault();
+  const name = $("#cfName").value.trim();
+  const phone = $("#cfPhone").value.trim();
+  const msg = $("#cfMsg").value.trim();
+  const phoneOk = /^[6-9]\d{9}$/.test(phone);
+  const fields = [ ["#cfName", name.length>=2], ["#cfPhone", phoneOk], ["#cfMsg", msg.length>=5] ];
+  let valid = true;
+  fields.forEach(([sel, ok])=>{
+    const input = $(sel);
+    input.classList.toggle("ring-2", !ok);
+    input.classList.toggle("ring-rose-400", !ok);
+    input.parentElement.querySelector(".err").classList.toggle("hidden", ok);
+    if(!ok) valid = false;
+  });
+  if(!valid) return;
+  const waMsg = `Hello SpecsMax,\nName: ${name}\nPhone: ${phone}\nMessage: ${msg}`;
+  $("#formNote").classList.remove("hidden");
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMsg)}`, "_blank");
+});
+
+/* ================= SCROLL REVEAL ================= */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("revealed"); io.unobserve(en.target); } });
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+/* ================= INIT ================= */
+renderProducts();
+updateBadge();
+renderCart();
+</script>
+</body>
+</html>
